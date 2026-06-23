@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar";
 import HeroSlider from "./components/HeroSlider";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import CategoryPage from "./pages/CategoryPage";
 import Register from "./pages/Register";
@@ -29,6 +30,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
+
+        <Footer />
       </CartProvider>
     </BrowserRouter>
   );

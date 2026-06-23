@@ -1,20 +1,13 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import "../App.css";
 
 export default function Navbar() {
   const [hidden, setHidden] = useState(false);
-  const location = useLocation();
-  const isCategoryPage = location.pathname.startsWith("/category");
   const { totalItems } = useCart();
 
   useEffect(() => {
-    if (!isCategoryPage) {
-      setHidden(false);
-      return;
-    }
-
     let lastScrollY = window.scrollY;
 
     const handleScroll = () => {
@@ -23,19 +16,26 @@ export default function Navbar() {
 
       if (scrollingDown && window.scrollY > 80) {
         setHidden(true);
-      } else {
+      } else if (!scrollingDown) {
         setHidden(false);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isCategoryPage]);
+  }, []);
 
   return (
     <nav className={`navbar ${hidden ? "navbar-hidden" : ""}`}>
+
       <div className="logo">
-        <Link to="/">Carmi Fashion</Link>
+        <Link to="/">
+          <img
+            src="https://fqyfphnebclfswfrhhzv.supabase.co/storage/v1/object/public/assets/logo.png"
+            alt="Carmi Fashion"
+            className="navbar-logo"
+          />
+        </Link>
       </div>
 
       <ul className="nav-links">
@@ -55,6 +55,7 @@ export default function Navbar() {
           )}
         </Link>
       </div>
+
     </nav>
   );
 }

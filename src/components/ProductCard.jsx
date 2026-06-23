@@ -56,7 +56,13 @@ export default function ProductCard({ product }) {
       </button>
 
       <div className="product-store">
-        <span className="store-icon">🏬</span>
+        <span className="store-icon">
+            <img
+                        src="https://fqyfphnebclfswfrhhzv.supabase.co/storage/v1/object/public/assets/logo.png"
+                        alt="Carmi Fashion"
+                        style={{ height: "50px" }}
+            />
+        </span>
         <span>Carmi Fashion</span>
       </div>
     </div>

@@ -1,0 +1,215 @@
+.footer {
+  background: #1a1a2e;
+  color: #ccc;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 60px;
+}
+
+/* ── HAUT ── */
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1.8fr;
+  gap: 40px;
+  padding: 60px 60px 40px;
+}
+
+/* ── COLONNE BRAND ── */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-logo {
+  width: 160px;
+  object-fit: center cover;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.footer-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #aaa;
+  max-width: 280px;
+}
+
+/* ── RÉSEAUX SOCIAUX ── */
+.footer-socials {
+  display: flex;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.footer-socials a {
+  color: #aaa;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.footer-socials a svg {
+  width: 16px;
+  height: 16px;
+}
+
+.footer-socials a:hover {
+  color: #c9a84c;
+  border-color: #c9a84c;
+  transform: translateY(-3px);
+}
+
+/* ── COLONNES GÉNÉRALES ── */
+.footer-heading {
+  color: #c9a84c;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 16px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.footer-links li {
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #c9a84c;
+}
+
+/* ── BOUTIQUES ── */
+.boutique-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.boutique-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  
+  border-radius: 6px;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+/* ── PAYS ── */
+.footer-countries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.country-tag {
+  background: #252542;
+  color: #ccc;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #333;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.country-tag:hover {
+  background: #c9a84c;
+  color: #1a1a2e;
+}
+
+/* ── BAS ── */
+.footer-bottom {
+  border-top: 1px solid #2a2a45;
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-legal a {
+  font-size: 12px;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-legal a:hover {
+  color: #c9a84c;
+}
+
+.footer-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #aaa;
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.footer-link-btn:hover {
+  color: #c9a84c;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    padding: 40px 30px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .footer-legal {
+    gap: 12px;
+  }
+}
