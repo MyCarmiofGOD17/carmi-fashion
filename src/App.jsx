@@ -8,6 +8,7 @@ import CategoryPage from "./pages/CategoryPage";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import ShippingPage from "./pages/ShippingPage";
 
 export default function App() {
   return (
@@ -16,19 +17,12 @@ export default function App() {
         <Navbar />
 
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <HeroSlider />
-                <Home />
-              </>
-            }
-          />
+          <Route path="/" element={<><HeroSlider /><Home /></>} />
           <Route path="/category/:categoryId" element={<CategoryPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/shipping" element={<ShippingPage />} />
         </Routes>
 
         <Footer />

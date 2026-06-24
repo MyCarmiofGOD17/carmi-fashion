@@ -1,0 +1,131 @@
+.shipping-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 30px;
+}
+
+.shipping-header {
+  margin-bottom: 40px;
+}
+
+.shipping-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 20px 0 10px;
+}
+
+.shipping-subtitle {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* ── ZONE ── */
+.shipping-zone {
+  margin-bottom: 40px;
+}
+
+.shipping-zone-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #a52a2a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f1e4e4;
+}
+
+/* ── TABLE ── */
+.shipping-table {
+  border-radius: 12px;
+  border: 1px solid #eaeaea;
+  overflow: hidden;
+}
+
+.shipping-table-header {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr;
+  background: #1a1a2e;
+  color: #c9a84c;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.shipping-table-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr;
+  padding: 14px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f5;
+  background: #fff;
+  transition: background 0.2s;
+}
+
+.shipping-table-row:last-child {
+  border-bottom: none;
+}
+
+.shipping-table-row:hover {
+  background: #fdf6f0;
+}
+
+.shipping-country {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.shipping-delay {
+  color: #666;
+}
+
+.shipping-price {
+  font-weight: 700;
+  color: #a52a2a;
+}
+
+/* ── NOTE ── */
+.shipping-note {
+  background: #f5f6fa;
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 40px 0 30px;
+}
+
+.shipping-note h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 14px;
+}
+
+.shipping-note ul {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shipping-note li {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.shipping-note a {
+  color: #a52a2a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.shipping-cta {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+}
