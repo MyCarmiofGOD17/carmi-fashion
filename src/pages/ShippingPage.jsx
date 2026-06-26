@@ -18,7 +18,8 @@ export default function ShippingPage() {
         <h1 className="shipping-title">🚚 Livraison internationale</h1>
         <p className="shipping-subtitle">
           Carmi Fashion livre dans 14 pays. Retrouvez ci-dessous les tarifs
-          et délais estimés selon votre destination.
+          et délais estimés selon votre destination. Nos frais reflètent
+          l'excellence et le soin apportés à chaque expédition.
         </p>
       </div>
 
@@ -42,9 +43,7 @@ export default function ShippingPage() {
                   </span>
                   <span className="shipping-delay">⏱ {country.delay}</span>
                   <span className="shipping-price">
-                    {country.price === 0
-                      ? "✅ Gratuit"
-                      : `${country.price.toLocaleString("fr-FR")} FCFA`}
+                    {country.price.toLocaleString("fr-FR")} FCFA
                   </span>
                 </div>
               ))}
@@ -58,8 +57,9 @@ export default function ShippingPage() {
         <ul>
           <li>Les délais sont estimés à partir de la confirmation de commande.</li>
           <li>Les frais de livraison sont calculés par commande, peu importe le nombre d'articles.</li>
-          <li>La livraison en Côte d'Ivoire est <strong>gratuite</strong>.</li>
+          <li>La livraison en Côte d'Ivoire est assurée en <strong>24h – 48h</strong> pour <strong>15 000 FCFA</strong>.</li>
           <li>Un numéro de suivi vous sera communiqué après l'expédition.</li>
+          <li>Chaque colis est soigneusement emballé aux couleurs de Carmi Fashion.</li>
           <li>Pour toute question : <a href="tel:+2250574326131">+225 05 74 32 61 31</a></li>
         </ul>
       </div>

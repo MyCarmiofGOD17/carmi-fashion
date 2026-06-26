@@ -46,6 +46,7 @@ export default function HeroSlider() {
   return (
     <div className="hero-slider">
 
+      {/* Track */}
       <div
         className="slider-track"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -57,9 +58,17 @@ export default function HeroSlider() {
         ))}
       </div>
 
-      <button className="slider-arrow slider-arrow-left" onClick={prev}>‹</button>
-      <button className="slider-arrow slider-arrow-right" onClick={next}>›</button>
+      {/* Flèche gauche */}
+      <button className="slider-arrow slider-arrow-left" onClick={prev}>
+        ‹
+      </button>
 
+      {/* Flèche droite */}
+      <button className="slider-arrow slider-arrow-right" onClick={next}>
+        ›
+      </button>
+
+      {/* Points de navigation */}
       <div className="slide-dots">
         {slides.map((_, index) => (
           <span
