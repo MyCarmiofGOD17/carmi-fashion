@@ -16,6 +16,7 @@ export default function Cart() {
   const country = SHIPPING_COUNTRIES.find((c) => c.code === selectedCountry);
   const shippingCost = country ? country.price : 0;
   const grandTotal = sousTotal + shippingCost;
+  const anyModified = Object.values(modified).some(Boolean);
 
   const handleChangeQty = (id, newQty) => {
     if (newQty <= 0) { removeFromCart(id); return; }
@@ -23,39 +24,18 @@ export default function Cart() {
     setModified((prev) => ({ ...prev, [id]: true }));
   };
 
-  const handleRefresh = () => window.location.reload();
-
   const handleCommande = () => {
     if (cart.length === 0) return;
-
-    // Sauvegarde le pays sélectionné pour la page de confirmation
     sessionStorage.setItem("selectedCountry", selectedCountry);
-
-    // 1 — Ouvre WhatsApp
-    const lignes = cart.map(
-      (item) =>
-        `• ${item.name} x${Number(item.quantity)} — ${(Number(item.price) * Number(item.quantity)).toLocaleString("fr-FR")} FCFA`
-    );
-    const message =
-      `🛍️ *Nouvelle commande Carmi Fashion*\n\n` +
-      lignes.join("\n") +
-      `\n\n━━━━━━━━━━━━━━━\n` +
-      `🧾 Sous-total : ${sousTotal.toLocaleString("fr-FR")} FCFA\n` +
-      `🚚 Livraison (${country.flag} ${country.name}) : ${shippingCost.toLocaleString("fr-FR")} FCFA\n` +
-      `💰 *Total : ${grandTotal.toLocaleString("fr-FR")} FCFA*\n` +
-      `⏱ Délai estimé : ${country.delay}\n\n` +
-      `Merci de confirmer ma commande 🙏`;
-
-    window.open(
-      `https://wa.me/2250574326131?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
-
-    // 2 — Redirige vers la page de confirmation
-    navigate("/order-confirmation");
+    sessionStorage.setItem("orderSummary", JSON.stringify({
+      cart,
+      sousTotal,
+      shippingCost,
+      grandTotal,
+      country,
+    }));
+    navigate("/order-choice");
   };
-
-  const anyModified = Object.values(modified).some(Boolean);
 
   return (
     <div className="cart-page">
@@ -97,9 +77,8 @@ export default function Cart() {
             );
           })}
 
-          {/* Bouton rafraîchir global */}
           {anyModified && (
-            <button className="refresh-global-btn" onClick={handleRefresh}>
+            <button className="refresh-global-btn" onClick={() => window.location.reload()}>
               🔄 Mettre à jour le panier
             </button>
           )}

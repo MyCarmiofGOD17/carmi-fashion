@@ -9,6 +9,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import ShippingPage from "./pages/ShippingPage";
+import OrderChoice from "./pages/OrderChoice";
+import OrderForm from "./pages/OrderForm";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import OrderSuccess from "./pages/OrderSuccess";
 
@@ -24,6 +26,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/shipping" element={<ShippingPage />} />
+          <Route path="/order-choice" element={<OrderChoice />} />
+          <Route path="/order-form" element={<OrderForm />} />
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
           <Route path="/order-success" element={<OrderSuccess />} />
         </Routes>
