@@ -929,3 +929,10 @@ body {
    BOUTON AJOUTÉ
 ══════════════════════════════ */
 .add-to-cart-btn.added { background: #1aa260; }
+
+.cart-item-variant {
+  font-size: 12px;
+  color: #a52a2a;
+  font-weight: 600;
+  margin: 2px 0 4px;
+}

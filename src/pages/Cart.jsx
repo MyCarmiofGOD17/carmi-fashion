@@ -18,21 +18,17 @@ export default function Cart() {
   const grandTotal = sousTotal + shippingCost;
   const anyModified = Object.values(modified).some(Boolean);
 
-  const handleChangeQty = (id, newQty) => {
-    if (newQty <= 0) { removeFromCart(id); return; }
-    updateQuantity(id, newQty);
-    setModified((prev) => ({ ...prev, [id]: true }));
+  const handleChangeQty = (variantId, newQty) => {
+    if (newQty <= 0) { removeFromCart(variantId); return; }
+    updateQuantity(variantId, newQty);
+    setModified((prev) => ({ ...prev, [variantId]: true }));
   };
 
   const handleCommande = () => {
     if (cart.length === 0) return;
     sessionStorage.setItem("selectedCountry", selectedCountry);
     sessionStorage.setItem("orderSummary", JSON.stringify({
-      cart,
-      sousTotal,
-      shippingCost,
-      grandTotal,
-      country,
+      cart, sousTotal, shippingCost, grandTotal, country,
     }));
     navigate("/order-choice");
   };
@@ -57,22 +53,37 @@ export default function Cart() {
         <div className="cart-items">
 
           {cart.map((item) => {
+            const variantId = item.variantId || item.id;
             const prix = Number(item.price);
             const qte = Number(item.quantity);
+
             return (
-              <div key={item.id} className="cart-item">
+              <div key={variantId} className="cart-item">
                 <img src={item.image_url} alt={item.name} />
+
                 <div className="cart-item-info">
                   <h3>{item.name}</h3>
+
+                  {/* Affiche taille/couleur si présentes */}
+                  {(item.size || item.color) && (
+                    <p className="cart-item-variant">
+                      {item.size && <span>Taille : {item.size}</span>}
+                      {item.size && item.color && " · "}
+                      {item.color && <span>Couleur : {item.color}</span>}
+                    </p>
+                  )}
+
                   <p className="cart-item-price">{(prix * qte).toLocaleString("fr-FR")} FCFA</p>
                   <p className="cart-item-unit">{prix.toLocaleString("fr-FR")} FCFA / unité</p>
                 </div>
+
                 <div className="cart-quantity">
-                  <button onClick={() => handleChangeQty(item.id, qte - 1)}>−</button>
+                  <button onClick={() => handleChangeQty(variantId, qte - 1)}>−</button>
                   <span>{qte}</span>
-                  <button onClick={() => handleChangeQty(item.id, qte + 1)}>+</button>
+                  <button onClick={() => handleChangeQty(variantId, qte + 1)}>+</button>
                 </div>
-                <button className="cart-remove-btn" onClick={() => removeFromCart(item.id)}>✕</button>
+
+                <button className="cart-remove-btn" onClick={() => removeFromCart(variantId)}>✕</button>
               </div>
             );
           })}
@@ -109,17 +120,21 @@ export default function Cart() {
             <div className="cart-totals">
               <div className="cart-recap">
                 <p className="cart-recap-title">📋 Récapitulatif</p>
-                {cart.map((item) => (
-                  <div key={item.id} className="cart-recap-line">
-                    <span className="cart-recap-name">
-                      {item.name}
-                      <span className="cart-recap-qty"> × {Number(item.quantity)}</span>
-                    </span>
-                    <span className="cart-recap-amount">
-                      {(Number(item.price) * Number(item.quantity)).toLocaleString("fr-FR")} FCFA
-                    </span>
-                  </div>
-                ))}
+                {cart.map((item) => {
+                  const variantId = item.variantId || item.id;
+                  return (
+                    <div key={variantId} className="cart-recap-line">
+                      <span className="cart-recap-name">
+                        {item.name}
+                        {item.size && ` (${item.size}${item.color ? `, ${item.color}` : ""})`}
+                        <span className="cart-recap-qty"> × {Number(item.quantity)}</span>
+                      </span>
+                      <span className="cart-recap-amount">
+                        {(Number(item.price) * Number(item.quantity)).toLocaleString("fr-FR")} FCFA
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
               <div className="cart-total-line">
                 <span>Sous-total</span>

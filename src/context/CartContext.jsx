@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
-// Normalise un item — force price et quantity en Number
 const normalize = (item) => ({
   ...item,
   price: Number(item.price),
@@ -23,33 +22,55 @@ export function CartProvider({ children }) {
     localStorage.setItem("carmi_cart", JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product) => {
+  const addToCart = (product, options = {}) => {
+    const { size = null, color = null, quantity = 1 } = options;
+
+    // Identifiant unique par variante
+    const variantId = size || color
+      ? `${product.id}-${size || "default"}-${color || "default"}`
+      : product.id;
+
+    const qty = Number(quantity);
+
     setCart((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+      const existing = prev.find((item) => item.variantId === variantId);
       if (existing) {
+        // Ajoute la quantité sélectionnée à celle déjà présente
         return prev.map((item) =>
-          item.id === product.id
-            ? normalize({ ...item, quantity: item.quantity + 1 })
+          item.variantId === variantId
+            ? normalize({ ...item, quantity: item.quantity + qty })
             : item
         );
       }
-      return [...prev, normalize({ ...product, quantity: 1 })];
+      // Nouveau produit — ajoute avec la quantité sélectionnée
+      return [
+        ...prev,
+        normalize({
+          ...product,
+          variantId,
+          size,
+          color,
+          quantity: qty,
+        }),
+      ];
     });
   };
 
-  const removeFromCart = (productId) => {
-    setCart((prev) => prev.filter((item) => item.id !== productId));
+  const removeFromCart = (variantId) => {
+    setCart((prev) => prev.filter((item) => (item.variantId || item.id) !== variantId));
   };
 
-  const updateQuantity = (productId, quantity) => {
+  const updateQuantity = (variantId, quantity) => {
     const q = Number(quantity);
     if (q <= 0) {
-      removeFromCart(productId);
+      removeFromCart(variantId);
       return;
     }
     setCart((prev) =>
       prev.map((item) =>
-        item.id === productId ? normalize({ ...item, quantity: q }) : item
+        (item.variantId || item.id) === variantId
+          ? normalize({ ...item, quantity: q })
+          : item
       )
     );
   };

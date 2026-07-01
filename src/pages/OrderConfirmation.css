@@ -167,6 +167,51 @@
   color: #888;
 }
 
+/* ── BANDEAU PAYS ── */
+.order-country-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #1a1a2e;
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.order-country-flag {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.order-country-banner strong {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.order-country-delay {
+  font-size: 13px;
+  color: #c9a84c;
+  font-weight: 500;
+}
+
+.order-country-change {
+  margin-left: auto;
+  background: #c9a84c;
+  color: #1a1a2e;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.order-country-change:hover { opacity: 0.85; }
+
 /* ── RÉCAP COMMANDE ── */
 .order-recap-box {
   background: #f5f6fa;
@@ -265,6 +310,23 @@
   border-color: #a52a2a;
 }
 
+/* ── SELECT ── */
+.order-select {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.order-select:focus {
+  border-color: #a52a2a;
+}
+
 /* ── DESTINATAIRE ── */
 .order-radio-group {
   display: flex;
@@ -305,6 +367,58 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+/* ── SECTIONS DESTINATAIRE ── */
+.dest-section-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 16px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #e0d0d0;
+}
+
+/* ── SURPRISE ── */
+.surprise-toggle {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.surprise-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f6fa;
+  border: 2px solid #eaeaea;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  flex: 1;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.surprise-btn input { display: none; }
+
+.surprise-btn.selected {
+  border-color: #a52a2a;
+  background: #fdecea;
+  color: #a52a2a;
+}
+
+.surprise-notice {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #795548;
+  font-weight: 500;
 }
 
 /* ── CONDITIONS ── */
@@ -539,5 +653,23 @@
 
   .confirm-label {
     margin-top: 8px;
+  }
+
+  .surprise-toggle {
+    flex-direction: column;
+  }
+
+  .order-radio-group {
+    flex-direction: column;
+  }
+
+  .order-country-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .order-country-change {
+    margin-left: 0;
   }
 }

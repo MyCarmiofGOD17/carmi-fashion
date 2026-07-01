@@ -5,6 +5,7 @@ import HeroSlider from "./components/HeroSlider";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import CategoryPage from "./pages/CategoryPage";
+import ProductPage from "./pages/ProductPage";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
@@ -22,6 +23,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<><HeroSlider /><Home /></>} />
           <Route path="/category/:categoryId" element={<CategoryPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
